@@ -22,11 +22,13 @@ This is a Python script that allows you to interact with the YouTube API to retr
 
 Before running the script, make sure you have the following:
 
-1. YouTube Data API v3 Developer Key: Replace the `DEVELOPER_KEY` variable with your YouTube API key. You can obtain it by creating a project in the Google Developers Console and enabling the YouTube Data API v3.
+1. Install the required packages `mysql-connector-python` and `pymongo`.
+   
+2. YouTube Data API v3 Developer Key: Replace the `DEVELOPER_KEY` variable with your YouTube API key. You can obtain it by creating a project in the Google Developers Console and enabling the YouTube Data API v3.
 
-2. MongoDB Atlas Connection String: Replace the `CONNECTION_STRING` variable with your MongoDB Atlas connection string. You should have a MongoDB Atlas account to get this connection string.
+3. MongoDB Atlas Connection String: Replace the `CONNECTION_STRING` variable with your MongoDB Atlas connection string. You should have a MongoDB Atlas account to get this connection string.
 
-3. MySQL Database Credentials: Replace the `MYSQL_HOST`, `MYSQL_USER`, `MYSQL_PASSWORD`, and `MYSQL_DATABASE` variables with your MySQL database credentials.
+4. MySQL Database Credentials: Replace the `MYSQL_HOST`, `MYSQL_USER`, `MYSQL_PASSWORD`, and `MYSQL_DATABASE` variables with your MySQL database credentials.
 
 ## Functionality
 
@@ -110,34 +112,16 @@ The script `create_mysql_tables()` creates three tables in the MySQL database to
 - Make sure you have a MySQL database set up with the necessary credentials (database name, host, username, and password).
 
 **Instructions:**
-
-1. Open the Python script where you want to set up the MySQL tables.
-2. Replace the placeholders `MYSQL_HOST`, `MYSQL_USER`, `MYSQL_PASSWORD`, and `MYSQL_DATABASE` with your actual MySQL credentials.
-3. Run the script. The `create_mysql_tables()` function will be executed, connecting to your MySQL database and creating the required tables.
-4. Check your MySQL database to verify that the `Channel`, `Video`, and `Comment` tables have been created successfully.
-
+1. Replace the placeholders `MYSQL_HOST`, `MYSQL_USER`, `MYSQL_PASSWORD`, and `MYSQL_DATABASE` with your actual MySQL credentials.
+2. Run the script. The `create_mysql_tables()` function will be executed, connecting to your MySQL database and creating the required tables.
+3. Check your MySQL database to verify that the `Channel`, `Video`, and `Comment` tables have been created successfully.
+   
 Note: If the tables already exist, running the script will drop them and recreate them.
 
 ### Migrating Data from MongoDB to MySQL
 
-The script `migrate_data_to_mysql(channel_name)` migrates data from MongoDB to a MySQL database for a specified channel.
-
-**Prerequisites:**
-
-- Install the required packages `mysql-connector-python` and `pymongo`.
-- Ensure you have a MongoDB Atlas cluster set up and connected to your MongoDB database.
-- Make sure you have a MySQL database set up with the necessary credentials (database name, host, username, and password).
-
-**Instructions:**
-
-1. Open the Python script where you want to migrate the data.
-2. Replace the placeholders `MYSQL_HOST`, `MYSQL_USER`, `MYSQL_PASSWORD`, and `MYSQL_DATABASE` with your actual MySQL credentials.
-3. Replace the `CONNECTION_STRING` with your actual MongoDB connection string, including the database name.
-4. Copy the `migrate_data_to_mysql(channel_name)` function to your script.
-5. Replace the `channel_name` argument in the function call with the name of the channel for which you want to migrate the data.
-6. Run the script. The function will connect to MongoDB, fetch the data for the specified channel, and insert it into the MySQL tables (`Channel`, `Video`, and `Comment`).
-7. Check your MySQL database to verify that the data has been migrated successfully.
-8. Write the appropriate SQL queries to get the useful insights.
+The script `migrate_data_to_mysql(channel_name)` migrates data from MongoDB to a MySQL database for a specified channel.Once you have migrated the data to MySql,you can perform various
+SQL queries to get more insights about the various channels.
 
 That's it! You now have a basic understanding of how to connect to a MongoDB server and perform a simple operation using Python and PyMongo. Feel free to modify and expand the script based on your specific use case.
 
