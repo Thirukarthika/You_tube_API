@@ -81,9 +81,11 @@ After retrieving and storing the data, the script provides a simple CLI menu to 
 
 5. After storing the data in MongoDB, the script will prompt you to choose a channel name from the list to migrate to SQL database.
 
-6. Enter the corresponding number of the query from the menu or type 'exit' to stop query execution.
+6. Once migrated to MySql database, You can perform various queries to get insights about data.
+   
+7. Enter the corresponding number of the query from the menu or type 'exit' to stop query execution.
 
-7. View the query results to gain insights into the YouTube data.
+9. View the query results to gain insights into the YouTube data.
 
 Note: You can modify or add more SQL queries to the menu if you want to perform additional data analysis tasks.
 
@@ -94,57 +96,6 @@ To establish a connection to the MongoDB server, the script uses the `pymongo.Mo
 ```python
 uri = "mongodb+srv://thirukarthikanadar21:oWwrPOs8XioZaSQd@cluster0.g3gasa2.mongodb.net/?retryWrites=true&w=majority"
 ```
-
-Replace this URI with your own MongoDB Atlas connection URI.
-
-## Ping the MongoDB Deployment
-
-After establishing the connection, the script sends a ping request to the MongoDB server to confirm a successful connection. This is done using the `client.admin.command('ping')` method. If the connection is successful, the following message will be displayed:
-
-```
-Pinged your deployment. You successfully connected to MongoDB!
-```
-
-## Accessing a Sample Collection
-
-Once the connection is confirmed, the script accesses a sample collection in the database. The database name is `youtube_db`, and the collection name is `youtube_collection`. You can modify these names to suit your own database and collection.
-
-```python
-# Access a sample collection
-db = client.youtube_db  # Replace 'youtube_db' with your database name
-collection = db.youtube_collection  # Replace 'youtube_collection' with your collection name
-```
-
-## Performing a Simple Operation
-
-The script performs a simple operation to check the connection's functionality. It counts the number of documents in the collection using the `count_documents({})` method and prints the result:
-
-```python
-# Perform a simple operation to check the connection
-document_count = collection.count_documents({})
-print(f"Number of documents in the collection: {document_count}")
-```
-
-This will display the number of documents present in the `youtube_collection`.
-
-## Handling Exceptions
-
-The code is wrapped in a try-except block to handle exceptions gracefully. If any exception occurs during the connection process or the execution of the simple operation, it will be caught, and the corresponding error message will be displayed.
-
-```python
-except Exception as e:
-    print(e)
-```
-
-## Running the Script
-
-To run the script, simply execute it using a Python interpreter:
-
-```bash
-python your_script_name.py
-```
-
-Replace `your_script_name.py` with the name of the Python file containing the provided code.
 
 Make sure that the required libraries (Python and PyMongo) are installed and that you have a working internet connection to connect to the MongoDB Atlas cluster.
 Now let us proceed with migration of details from Mongodb to Mysql for **channel name** entered by user.
